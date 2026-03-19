@@ -119,3 +119,40 @@
     openModal();
   }
 })();
+
+// ── Disable archived contact forms ──────────────────────────────
+(function () {
+  function disableForms() {
+    var wrappers = document.querySelectorAll(".cb_form_wrapper");
+    wrappers.forEach(function (wrapper) {
+      if (wrapper.querySelector(".archived-form-overlay")) {
+        return;
+      }
+
+      wrapper
+        .querySelectorAll("input, textarea, select, button")
+        .forEach(function (el) {
+          el.disabled = true;
+        });
+
+      var overlay = document.createElement("div");
+      overlay.className = "archived-form-overlay";
+
+      var stamp = document.createElement("div");
+      stamp.className = "archived-form-stamp";
+      stamp.innerHTML =
+        "🗃️ Archived mode: this contact form is unavailable" +
+        '<div class="archived-form-note">To get in touch, please visit my current portfolio.</div>' +
+        '<a class="archived-form-link" href="https://oliverstadie.com" target="_blank" rel="noopener noreferrer">Visit Current Portfolio</a>';
+
+      overlay.appendChild(stamp);
+      wrapper.appendChild(overlay);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", disableForms);
+  } else {
+    disableForms();
+  }
+})();
