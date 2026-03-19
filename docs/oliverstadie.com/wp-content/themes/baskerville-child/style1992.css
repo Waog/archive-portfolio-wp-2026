@@ -1,76 +1,77 @@
 /*
  Theme Name:   Baskerville Child
- Theme URI:    http://oliverstadie.com/baskerville-theme-child/
+ Theme URI:    https://oliverstadie.com/baskerville-theme-child/
  Description:  Baskerville Child Theme
  Author:       Oliver Stadie
- Author URI:   http://oliverstadie.com
+ Author URI:   https://oliverstadie.com
  Template:     baskerville
  Version:      1.0.0
  License:      GNU General Public License v2 or later
- License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  Tags:         black, dark, white, green, two-columns, fluid-layout, responsive-layout, customents, translation-ready, editor-style
 */
 
 .posts .post-meta {
-    display: none;
+  display: none;
 }
 
 .blog-title {
-    font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 div.post-content > div.one_third > img[class*="wp-image-"].alignnone {
-    margin: 2px;
+  margin: 2px;
 }
 
 div.content {
-    font-size: medium;
+  font-size: medium;
 }
 
-.hentry, .post {
-    border-radius: 6px;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
+.hentry,
+.post {
+  border-radius: 6px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
 .nocomments {
-    display: none;
+  display: none;
 }
 
 div.post-meta > p.post-date {
-    display: none;
+  display: none;
 }
 
 div.post-meta > p.post-date + p {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .child-text-align-center > * {
-    text-align: center;
+  text-align: center;
 }
 
 img.aligncenter {
-    border-width: 0px;
+  border-width: 0px;
 }
 
 img.alignleft {
-    border-width: 0px;
+  border-width: 0px;
 }
 
 .header-search-block > form > input.s {
-    border: 1px dotted #AAA;
+  border: 1px dotted #aaa;
 }
 
 li.current-menu-item > a {
-    color: #DDD;
+  color: #ddd;
 }
 
-li.current-menu-item > a::before { 
-    content: "◂";
+li.current-menu-item > a::before {
+  content: "◂";
 }
 
-li.current-menu-item > a::after { 
-    content: "▸";
+li.current-menu-item > a::after {
+  content: "▸";
 }

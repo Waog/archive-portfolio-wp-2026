@@ -4,7 +4,7 @@
 }
 
 .contact_icon {
-	background: url(http://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/icon.png) no-repeat top left;
+	background: url(https://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/icon.png) no-repeat top left;
 	display: inline-block;
 	height: 16px;
 	margin: 0 2px 0 0;
@@ -54,7 +54,7 @@
 	right: -22px;
 	width: 30px;
 	height: 30px;
-	background: transparent url("http://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/fancybox.png") -40px 0;
+	background: transparent url("https://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/fancybox.png") -40px 0;
 	cursor: pointer;
 	z-index: 1103;
 }
@@ -1641,19 +1641,19 @@ table th.layout-span12 {
 }
 
 .sorting {
-	background: url("http://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/tables/sort_both.png") no-repeat 100% 8px;
+	background: url("https://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/tables/sort_both.png") no-repeat 100% 8px;
 }
 
 .sorting_asc {
-	background: url("http://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/tables/sort_asc.png") no-repeat 100% 8px;
+	background: url("https://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/tables/sort_asc.png") no-repeat 100% 8px;
 }
 
 .sorting_desc {
-	background: url("http://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/tables/sort_desc.png") no-repeat 100% 8px;
+	background: url("https://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/tables/sort_desc.png") no-repeat 100% 8px;
 }
 
 .sorting_desc_disabled {
-	background: url("http://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/tables/sort_desc_disabled.png") no-repeat 100% 8px;
+	background: url("https://oliverstadie.com/wp-content/plugins/contact-bank/assets/images/tables/sort_desc_disabled.png") no-repeat 100% 8px;
 }
 
 .table.dataTable th:active {
