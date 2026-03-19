@@ -122,6 +122,113 @@
 
 // ── Disable archived contact forms ──────────────────────────────
 (function () {
+  function createArchiveOverlay(options) {
+    var overlay = document.createElement("div");
+    overlay.className = "archived-form-overlay";
+
+    var stamp = document.createElement("div");
+    stamp.className = "archived-form-stamp";
+    stamp.innerHTML =
+      "🗃️ " +
+      options.title +
+      '<div class="archived-form-note">' +
+      options.note +
+      "</div>" +
+      '<a class="archived-form-link" href="https://oliverstadie.com">Visit Current Portfolio</a>';
+
+    overlay.appendChild(stamp);
+    return overlay;
+  }
+
+  function createSearchOverlay() {
+    var overlay = document.createElement("div");
+    overlay.className = "archived-search-overlay";
+    overlay.hidden = true;
+
+    var badge = document.createElement("div");
+    badge.className = "archived-search-badge";
+    badge.innerHTML =
+      "🗃️ Archived mode: search is unavailable." +
+      '<span class="archived-search-note">For current content and contact details, please visit my live portfolio.</span>' +
+      '<a class="archived-search-link" href="https://oliverstadie.com">Visit Current Portfolio</a>';
+
+    overlay.appendChild(badge);
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+
+  function syncSearchOverlay(wrapper) {
+    var overlay = wrapper._archivedSearchOverlay;
+    var rect;
+    var isVisible;
+
+    if (!overlay) {
+      return;
+    }
+
+    rect = wrapper.getBoundingClientRect();
+    isVisible =
+      rect.width > 0 &&
+      rect.height > 0 &&
+      window.getComputedStyle(wrapper).display !== "none";
+
+    if (!isVisible) {
+      overlay.hidden = true;
+      return;
+    }
+
+    overlay.hidden = false;
+    overlay.style.left = rect.left + "px";
+    overlay.style.top = rect.top + "px";
+    overlay.style.width = rect.width + "px";
+    overlay.style.height = rect.height + "px";
+    overlay.style.borderRadius = window.getComputedStyle(wrapper).borderRadius;
+  }
+
+  function scheduleSearchOverlaySync(wrapper) {
+    window.requestAnimationFrame(function () {
+      syncSearchOverlay(wrapper);
+      window.setTimeout(function () {
+        syncSearchOverlay(wrapper);
+      }, 450);
+      window.setTimeout(function () {
+        syncSearchOverlay(wrapper);
+      }, 700);
+    });
+  }
+
+  function lockControl(el) {
+    el.setAttribute("aria-disabled", "true");
+    el.tabIndex = -1;
+
+    if (
+      "readOnly" in el &&
+      !/^(button|submit|reset|checkbox|radio|range|file|color|hidden)$/i.test(
+        el.type || "",
+      )
+    ) {
+      el.readOnly = true;
+    }
+  }
+
+  function disableControls(container, selector) {
+    container.querySelectorAll(selector).forEach(function (el) {
+      lockControl(el);
+    });
+  }
+
+  function preventSubmission(form) {
+    if (!form || form.getAttribute("data-archived-submit-locked") === "true") {
+      return;
+    }
+
+    form.setAttribute("data-archived-submit-locked", "true");
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    });
+  }
+
   function disableForms() {
     var wrappers = document.querySelectorAll(".cb_form_wrapper");
     wrappers.forEach(function (wrapper) {
@@ -129,30 +236,83 @@
         return;
       }
 
-      wrapper
-        .querySelectorAll("input, textarea, select, button")
-        .forEach(function (el) {
-          el.disabled = true;
+      wrapper.classList.add("archived-overlay-host");
+      disableControls(wrapper, "input, textarea, select, button");
+      preventSubmission(wrapper.querySelector("form"));
+      wrapper.appendChild(
+        createArchiveOverlay({
+          title: "Archived mode: this contact form is unavailable",
+          note: "To get in touch, please visit my current portfolio.",
+        }),
+      );
+    });
+  }
+
+  function disableSearchForms() {
+    var wrappers = document.querySelectorAll(".header-search-block");
+    wrappers.forEach(function (wrapper) {
+      disableControls(wrapper, "input, textarea, select, button");
+      preventSubmission(wrapper.querySelector("form"));
+
+      if (!wrapper._archivedSearchOverlay) {
+        wrapper._archivedSearchOverlay = createSearchOverlay();
+      }
+
+      if (wrapper.getAttribute("data-archived-search-observed") !== "true") {
+        wrapper.setAttribute("data-archived-search-observed", "true");
+
+        var observer = new MutationObserver(function () {
+          scheduleSearchOverlaySync(wrapper);
         });
 
-      var overlay = document.createElement("div");
-      overlay.className = "archived-form-overlay";
+        observer.observe(wrapper, {
+          attributes: true,
+          attributeFilter: ["class", "style"],
+        });
+      }
 
-      var stamp = document.createElement("div");
-      stamp.className = "archived-form-stamp";
-      stamp.innerHTML =
-        "🗃️ Archived mode: this contact form is unavailable" +
-        '<div class="archived-form-note">To get in touch, please visit my current portfolio.</div>' +
-        '<a class="archived-form-link" href="https://oliverstadie.com" target="_blank" rel="noopener noreferrer">Visit Current Portfolio</a>';
+      scheduleSearchOverlaySync(wrapper);
+    });
 
-      overlay.appendChild(stamp);
-      wrapper.appendChild(overlay);
+    document.querySelectorAll(".search-toggle").forEach(function (toggle) {
+      if (toggle.getAttribute("data-archived-search-bound") === "true") {
+        return;
+      }
+
+      toggle.setAttribute("data-archived-search-bound", "true");
+      toggle.addEventListener("click", function () {
+        document
+          .querySelectorAll(".header-search-block")
+          .forEach(function (wrapper) {
+            scheduleSearchOverlaySync(wrapper);
+          });
+      });
+    });
+
+    window.addEventListener("resize", function () {
+      document
+        .querySelectorAll(".header-search-block")
+        .forEach(function (wrapper) {
+          scheduleSearchOverlaySync(wrapper);
+        });
+    });
+
+    window.addEventListener("scroll", function () {
+      document
+        .querySelectorAll(".header-search-block")
+        .forEach(function (wrapper) {
+          syncSearchOverlay(wrapper);
+        });
     });
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", disableForms);
+    document.addEventListener("DOMContentLoaded", function () {
+      disableForms();
+      disableSearchForms();
+    });
   } else {
     disableForms();
+    disableSearchForms();
   }
 })();
