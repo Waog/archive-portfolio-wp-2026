@@ -1,0 +1,27 @@
+HTTrack3.49-2+htsswf+htsjava launched on Thu, 19 Mar 2026 14:54:52 at http://oliverstadie.com/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar -* +*.oliverstadie.com/* +oliverstadie.com/*
+(winhttrack -qwr5%e0C2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://oliverstadie.com/ -O1 "D:\dev\wp-portfolio-scraped\archive-portfolio-wp-2026" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar -* +*.oliverstadie.com/* +oliverstadie.com/* )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+14:55:47	Error: 	"Not Found" (404) at link oliverstadie.com/wp-json/oembed/1.0/embed?url=%2F (from oliverstadie.com/)
+14:55:47	Error: 	"Not Found" (404) at link oliverstadie.com/wp-json/oembed/1.0/embed?url=%2F&format=xml (from oliverstadie.com/)
+14:56:28	Warning: 	File not parsed, looks like binary: oliverstadie.com/wp-content/plugins/header-customizer-lite/assets/fonts/expand.woff2?50945455
+15:02:08	Warning: 	Temporary Redirect for oliverstadie.com/consulting-soft-skills/
+15:02:08	Warning: 	File has moved from oliverstadie.com/consulting-soft-skills/ to /cat-nav/consulting-soft-skills/
+15:02:08	Warning: 	Temporary Redirect for oliverstadie.com/software-architecture-design/
+15:02:08	Warning: 	File has moved from oliverstadie.com/software-architecture-design/ to /cat-nav/software-architecture-design/
+15:02:08	Warning: 	Temporary Redirect for oliverstadie.com/project-management/
+15:02:08	Warning: 	File has moved from oliverstadie.com/project-management/ to /cat-nav/project-manager/
+15:04:40	Warning: 	file not stored in cache due to bogus state (broken size, expected 9084517 got 1727570): oliverstadie.com/wp-content/uploads/2016/04/diplomarbeit_final_2015_06_26.pdf
+15:31:19	Warning: 	Retry after error -4 (Incorrect length (1727570 Bytes, 9084517 expected)) at link oliverstadie.com/wp-content/uploads/2016/04/diplomarbeit_final_2015_06_26.pdf (from oliverstadie.com/gui-testing/)
+15:58:18	Warning: 	Moved Permanently for oliverstadie.com/generali-advergame/
+15:58:18	Warning: 	File has moved from oliverstadie.com/generali-advergame/ to /generali-heroes/
+15:58:19	Warning: 	Moved Permanently for oliverstadie.com/playotope/
+15:58:19	Warning: 	File has moved from oliverstadie.com/playotope/ to /playotope-platform-game-maker/
+15:58:42	Error: 	"Not Found" (404) at link oliverstadie.com/tag/social-integration/ (from oliverstadie.com/skills-game-development/)
+
+HTTrack Website Copier/3.49-2 mirror complete in 1 hours 25 minutes 8 seconds : 957 links scanned, 947 files written (140073532 bytes overall) [126409764 bytes received at 24747 bytes/sec], 17981528 bytes transferred using HTTP compression in 521 files, ratio 21%, 2.8 requests per connection
+(3 errors, 13 warnings, 0 messages)
