@@ -97,6 +97,8 @@ export const legalProjectFactsData: LegalProjectFacts = {
     publicContactEmail: "info@oliverstadie.com",
     // the phone number is only visible in the imprint and not prominently displayed on the website, but it is still a public contact phone number
     publicContactPhone: "+4915202825986",
+    // even though the html contains a contact form, it's not usable and disabled by javascript
+    contactForm: undefined,
     // make explicit to reduce ambiguity in downstream generation
     communityFeatures: false,
     contractsConcludedOnWebsite: false,
@@ -104,6 +106,22 @@ export const legalProjectFactsData: LegalProjectFacts = {
 
   customImplementations: {
     serverLogs: false,
+    localStorage: [
+      {
+        key: "archiveNoticeDecisionV1",
+        valueDescription:
+          'Stores a JSON object with decision="stay" and an expiresAt timestamp.',
+        purpose:
+          "When loading, the website shows a popup to ask the user to switch to the newest portfolio website (and links to that new portfolio URL with a primary button). In case the user, still decides to stay in this archive website, remember that the visitor decided to stay on the archive website so the popup is not shown repeatedly.",
+        retentionPeriod:
+          "deleted by the JavaScript of this website after 24 hours, when visiting the website again or when the user clears their browser storage",
+        notes: [
+          "Used by the archive notice popup script, to decide if the popup should be shown.",
+          "If the user decides to leave, nothing is stored.",
+          "If the user decides to stay, the decision is stored.",
+        ],
+      },
+    ],
   },
 
   thirdParties: {
@@ -159,7 +177,7 @@ export const legalProjectFactsData: LegalProjectFacts = {
 
   documentUrls: {
     imprintUrl:
-      "https://waog.github.io/archive-portfolio-wp-2026/oliverstadie.com/legal/index.html#imprint-en",
+      "https://waog.github.io/archive-portfolio-wp-2026/oliverstadie.com/legal/index.html#imprint-de",
     privacyPolicyUrl:
       "https://waog.github.io/archive-portfolio-wp-2026/oliverstadie.com/legal/index.html#privacy-de",
   },

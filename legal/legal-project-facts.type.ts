@@ -1,4 +1,4 @@
-import { Purpose, ToBeResearched } from './legal-project-conclusions.type';
+import { Purpose, ToBeResearched } from "./legal-project-conclusions.type";
 
 /**
  * Schema for Legal Project Facts Data (see `./legal-project-facts.data.ts`).
@@ -90,18 +90,18 @@ export type OperatorFactsCore = {
    * - `public_body` - Behörde / öffentliche Stelle / Körperschaft des öffentlichen Rechts
    */
   legalForm:
-    | 'natural_person'
-    | 'sole_proprietorship'
-    | 'freelancer'
-    | 'civil_law_partnership'
-    | 'registered_merchant'
-    | 'ug'
-    | 'gmbh'
-    | 'ag'
-    | 'se'
-    | 'association'
-    | 'foundation'
-    | 'public_body';
+    | "natural_person"
+    | "sole_proprietorship"
+    | "freelancer"
+    | "civil_law_partnership"
+    | "registered_merchant"
+    | "ug"
+    | "gmbh"
+    | "ag"
+    | "se"
+    | "association"
+    | "foundation"
+    | "public_body";
 
   /**
    * Brand/trade name if different from legal name.
@@ -240,7 +240,7 @@ export type ProfessionalBody = {
    * - `optional` - may be named but not required
    * - `omit` - should not be named (consider setting the parent property to `null`)
    */
-  publishing?: 'required' | 'optional' | 'omit' | ToBeResearched;
+  publishing?: "required" | "optional" | "omit" | ToBeResearched;
 };
 
 export type ManagingPersonConfig = {
@@ -262,12 +262,12 @@ export type ManagingPersonConfig = {
    * - "board_member"
    */
   role:
-    | 'managing_director'
-    | 'founder'
-    | 'owner'
-    | 'chairman'
-    | 'board_member'
-    | 'other';
+    | "managing_director"
+    | "founder"
+    | "owner"
+    | "chairman"
+    | "board_member"
+    | "other";
 };
 
 export type ConsumerDisputeResolutionCore = {
@@ -308,7 +308,7 @@ export type ConsumerDisputeResolutionCore = {
   /**
    * Employee count category on 31 December of the previous year for VSBG § 36(3).
    */
-  employeeCountOnPreviousYearEnd: 'ten_or_less' | 'more_than_ten';
+  employeeCountOnPreviousYearEnd: "ten_or_less" | "more_than_ten";
 
   /**
    * Whether a short notice should be shown in the imprint even if the duty likely does not apply.
@@ -323,10 +323,10 @@ export type ConsumerDisputeResolutionCore = {
    * `always_omit` means that the notice should always be omitted, regardless of feasibility.
    */
   preferredMentioning?:
-    | 'mention_if_feasible'
-    | 'omit_if_feasible'
-    | 'always_mention'
-    | 'always_omit';
+    | "mention_if_feasible"
+    | "omit_if_feasible"
+    | "always_mention"
+    | "always_omit";
 
   notes?: string[];
 };
@@ -397,7 +397,7 @@ export type AudienceFactsCore = {
    * - "businesses" - business customers / B2B focus
    * - "mixed" - both consumers and businesses are targeted
    */
-  primaryAudience: 'general' | 'consumers' | 'businesses' | 'mixed';
+  primaryAudience: "general" | "consumers" | "businesses" | "mixed";
 
   /**
    * Whether children or teenagers are specifically targeted by the website, product, or communication.
@@ -425,7 +425,7 @@ export type AudienceTargetingFacts = {
    * - `germany` - typical users are from Germany
    * - `custom` - specific other geographic focus (e.g. specific countries, regions)
    */
-  scope: 'worldwide' | 'eu' | 'germany' | { customRegions: string[] };
+  scope: "worldwide" | "eu" | "germany" | { customRegions: string[] };
 
   /**
    * Primary markets within the scope, if relevant.
@@ -509,11 +509,11 @@ export type ContactFormCore = {
    * 3rd party providers should be specified in the `thirdParties` section.
    */
   spamProtection:
-    | 'Cloudflare Turnstile'
-    | 'Google reCAPTCHA'
-    | 'hCaptcha'
-    | 'Friendly Captcha'
-    | 'Custom'
+    | "Cloudflare Turnstile"
+    | "Google reCAPTCHA"
+    | "hCaptcha"
+    | "Friendly Captcha"
+    | "Custom"
     | null;
 
   /**
@@ -549,11 +549,11 @@ export type OtherFormCore = {
    * Processing target of this form.
    */
   submissionTarget:
-    | 'email'
-    | 'crm'
-    | 'ticket_system'
-    | 'database'
-    | 'applicant_tracking_system';
+    | "email"
+    | "crm"
+    | "ticket_system"
+    | "database"
+    | "applicant_tracking_system";
 
   /**
    * Intuitively known purposes of the form.
@@ -589,14 +589,14 @@ export type UserAccountsCore = {
    * Should be listed in the third-party section or custom project features.
    */
   methods: Array<
-    | 'password'
-    | 'magic_link'
-    | 'google_oauth'
-    | 'apple_oauth'
-    | 'github_oauth'
-    | 'facebook_oauth'
-    | 'microsoft_oauth'
-    | 'custom_sso'
+    | "password"
+    | "magic_link"
+    | "google_oauth"
+    | "apple_oauth"
+    | "github_oauth"
+    | "facebook_oauth"
+    | "microsoft_oauth"
+    | "custom_sso"
   >;
 
   /**
@@ -630,13 +630,13 @@ export type NewsletterCore = {
    * Should be listed in the third-party section or custom project features.
    */
   provider:
-    | 'MailerLite'
-    | 'Brevo'
-    | 'Mailchimp'
-    | 'ConvertKit'
-    | 'Klaviyo'
-    | 'HubSpot'
-    | 'Custom';
+    | "MailerLite"
+    | "Brevo"
+    | "Mailchimp"
+    | "ConvertKit"
+    | "Klaviyo"
+    | "HubSpot"
+    | "Custom";
 
   /**
    * Signup mode.
@@ -644,7 +644,7 @@ export type NewsletterCore = {
    * - "double_opt_in" - confirmation email required before subscription becomes active
    * - "single_opt_in" - direct signup without confirmation email
    */
-  signupMode: 'double_opt_in' | 'single_opt_in';
+  signupMode: "double_opt_in" | "single_opt_in";
 
   /**
    * Fields collected for newsletter signup.
@@ -670,14 +670,14 @@ export type UploadsCore = {
    * Types of uploaded files/content.
    */
   uploadTypes: Array<
-    | 'avatar'
-    | 'image'
-    | 'video'
-    | 'audio'
-    | 'pdf'
-    | 'document'
-    | 'cv'
-    | 'invoice'
+    | "avatar"
+    | "image"
+    | "video"
+    | "audio"
+    | "pdf"
+    | "document"
+    | "cv"
+    | "invoice"
   >;
 
   /**
@@ -685,12 +685,12 @@ export type UploadsCore = {
    * Should be listed in the third-party section or custom project features.
    */
   storageProvider:
-    | 'AWS S3'
-    | 'Cloudflare R2'
-    | 'Google Cloud Storage'
-    | 'Azure Blob Storage'
-    | 'Supabase Storage'
-    | 'Local server';
+    | "AWS S3"
+    | "Cloudflare R2"
+    | "Google Cloud Storage"
+    | "Azure Blob Storage"
+    | "Supabase Storage"
+    | "Local server";
 
   /**
    * Whether uploaded content can become public.
@@ -718,11 +718,11 @@ export type PaymentsCore = {
    * - `mixed`             - combination of different models
    */
   businessModel:
-    | 'one_time_purchase'
-    | 'subscription'
-    | 'usage_based'
-    | 'donation'
-    | 'mixed';
+    | "one_time_purchase"
+    | "subscription"
+    | "usage_based"
+    | "donation"
+    | "mixed";
 
   /**
    * What is sold.
@@ -734,11 +734,11 @@ export type PaymentsCore = {
    * - `mixed`            - combination of different types
    */
   productType:
-    | 'digital_services'
-    | 'digital_content'
-    | 'physical_goods'
-    | 'offline_services'
-    | 'mixed';
+    | "digital_services"
+    | "digital_content"
+    | "physical_goods"
+    | "offline_services"
+    | "mixed";
 
   /**
    * Whether the offer is B2C.
@@ -757,15 +757,15 @@ export type PaymentsCore = {
    * Should be listed in the third party section.
    */
   paymentProviders: Array<
-    | 'Stripe'
-    | 'PayPal'
-    | 'Mollie'
-    | 'Paddle'
-    | 'Adyen'
-    | 'Braintree'
-    | 'Apple In-App Purchase'
-    | 'Google Play Billing'
-    | 'Bank transfer'
+    | "Stripe"
+    | "PayPal"
+    | "Mollie"
+    | "Paddle"
+    | "Adyen"
+    | "Braintree"
+    | "Apple In-App Purchase"
+    | "Google Play Billing"
+    | "Bank transfer"
   >;
 
   /**
@@ -783,10 +783,10 @@ export type PaymentsCore = {
    * - `null`            - cancellation not applicable (e.g. one-time purchases without cancellation)
    */
   cancellationProcess:
-    | 'customer_portal'
-    | 'email_support'
-    | 'app_store'
-    | 'manual'
+    | "customer_portal"
+    | "email_support"
+    | "app_store"
+    | "manual"
     | null;
 };
 
@@ -796,11 +796,11 @@ export type BookingCore = {
    * Should be listed in the third party section or custom project features.
    */
   provider:
-    | 'Calendly'
-    | 'Microsoft Bookings'
-    | 'Cal.com'
-    | 'Google Appointment Scheduler'
-    | 'Custom';
+    | "Calendly"
+    | "Microsoft Bookings"
+    | "Cal.com"
+    | "Google Appointment Scheduler"
+    | "Custom";
 
   /**
    * Fields collected during booking.
@@ -814,13 +814,13 @@ export type LiveChatCore = {
    * Should be listed in the third party section or custom project features.
    */
   provider:
-    | 'Crisp'
-    | 'Intercom'
-    | 'Zendesk Chat'
-    | 'Tidio'
-    | 'LiveChat'
-    | 'HubSpot Chat'
-    | 'Custom';
+    | "Crisp"
+    | "Intercom"
+    | "Zendesk Chat"
+    | "Tidio"
+    | "LiveChat"
+    | "HubSpot Chat"
+    | "Custom";
 
   /**
    * Whether chat transcripts are stored.
@@ -845,6 +845,44 @@ export type CustomImplementationsCore = {
    * Third party serverLogs are described in the `thirdParties` section.
    */
   serverLogs?: boolean;
+
+  /**
+   * Project-specific browser localStorage usage that is not covered by third-party services.
+   */
+  localStorage?: LocalStorageEntryCore[];
+};
+
+export type LocalStorageEntryCore = {
+  /**
+   * Browser localStorage key.
+   * Examples:
+   * - "archiveNoticeDecisionV1"
+   */
+  key: string;
+
+  /**
+   * What is stored for this key.
+   * Examples:
+   * - "Stores whether the user decided to stay in archive mode and an expiry timestamp"
+   */
+  valueDescription: string;
+
+  /**
+   * Why this key is stored.
+   * Examples:
+   * - "Prevent repeatedly showing the archive notice popup"
+   */
+  purpose: string;
+
+  /**
+   * Retention period for this localStorage entry.
+   * Examples:
+   * - "24 hours"
+   * - "until user clears browser storage"
+   */
+  retentionPeriod: string;
+
+  notes?: string[];
 };
 
 /**
@@ -929,31 +967,31 @@ export type DocumentUrlsCore = {
  * Use this single source to keep collected field sets consistent across configs.
  */
 export type CollectedField =
-  | 'name'
-  | 'first_name'
-  | 'last_name'
-  | 'email'
-  | 'phone'
-  | 'company'
-  | 'subject'
-  | 'message'
-  | 'address'
-  | 'budget'
-  | 'project_details'
-  | 'attachment'
-  | 'cv'
-  | 'cover_letter'
-  | 'notes';
+  | "name"
+  | "first_name"
+  | "last_name"
+  | "email"
+  | "phone"
+  | "company"
+  | "subject"
+  | "message"
+  | "address"
+  | "budget"
+  | "project_details"
+  | "attachment"
+  | "cv"
+  | "cover_letter"
+  | "notes";
 
 export type LanguageCode =
-  | 'en'
-  | 'de'
-  | 'fr'
-  | 'es'
-  | 'it'
-  | 'pt'
-  | 'nl'
-  | 'pl'
-  | 'ru'
-  | 'ja'
-  | 'zh';
+  | "en"
+  | "de"
+  | "fr"
+  | "es"
+  | "it"
+  | "pt"
+  | "nl"
+  | "pl"
+  | "ru"
+  | "ja"
+  | "zh";
