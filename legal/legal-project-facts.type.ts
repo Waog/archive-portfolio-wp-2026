@@ -845,6 +845,44 @@ export type CustomImplementationsCore = {
    * Third party serverLogs are described in the `thirdParties` section.
    */
   serverLogs?: boolean;
+
+  /**
+   * Project-specific browser localStorage usage that is not covered by third-party services.
+   */
+  localStorage?: LocalStorageEntryCore[];
+};
+
+export type LocalStorageEntryCore = {
+  /**
+   * Browser localStorage key.
+   * Examples:
+   * - "archiveNoticeDecisionV1"
+   */
+  key: string;
+
+  /**
+   * What is stored for this key.
+   * Examples:
+   * - "Stores whether the user decided to stay in archive mode and an expiry timestamp"
+   */
+  valueDescription: string;
+
+  /**
+   * Why this key is stored.
+   * Examples:
+   * - "Prevent repeatedly showing the archive notice popup"
+   */
+  purpose: string;
+
+  /**
+   * Retention period for this localStorage entry.
+   * Examples:
+   * - "24 hours"
+   * - "until user clears browser storage"
+   */
+  retentionPeriod: string;
+
+  notes?: string[];
 };
 
 /**

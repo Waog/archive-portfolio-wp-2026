@@ -575,6 +575,7 @@ export const legalProjectConclusionsData: LegalProjectConclusions = {
     //   legalProjectFactsData.thirdParties,
     //   legalProjectFactsData.userRelatedFeatures.publicContactEmail,
     //   legalProjectFactsData.userRelatedFeatures.publicContactPhone,
+    //   legalProjectFactsData.customImplementations.localStorage,
     //   "GDPR Article 13 / IHK guidance: website operators processing personal data (including IP-based hosting data) need a privacy policy."
     // ]
     privacyPolicy: true,
@@ -587,14 +588,15 @@ export const legalProjectConclusionsData: LegalProjectConclusions = {
 
     // reasons: [
     //   legalProjectFactsData.thirdParties,
-    //   "On the canonical facts, no separate standalone cookie-policy document is required; any technically necessary storage information is handled within the privacy policy."
+    //   legalProjectFactsData.customImplementations.localStorage,
+    //   "No separate standalone cookie-policy document is required on the modeled facts; technically necessary storage can be covered in the privacy policy."
     // ]
     cookiePolicy: false,
 
     // reasons: [
     //   legalProjectFactsData.project.description,
     //   legalProjectFactsData.userRelatedFeatures.contractsConcludedOnWebsite,
-    //   "BFSG primarily concerns covered products/services, especially consumer-facing electronic commerce and comparable covered services; the modeled site is an informational archive/portfolio without direct online contracting."
+    //   "BFSG relevance for private-sector websites is centered on covered consumer electronic-commerce services; the modeled archive site does not conclude consumer contracts online."
     // ]
     accessibilityStatement: false,
   },
