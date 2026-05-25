@@ -313,3 +313,27 @@ body.archive-notice-open {
 .archived-form-link:focus {
   background: rgba(255, 255, 255, 0.18);
 }
+
+/* ── Disabled contact form controls (no-JS archive) ─────────────── */
+.btn_submit:disabled,
+.btn_submit[disabled] {
+  background-color: #888 !important;
+  color: #ccc !important;
+  cursor: not-allowed !important;
+  opacity: 0.65 !important;
+}
+.btn_submit:disabled:hover,
+.btn_submit[disabled]:hover,
+fieldset[disabled] .btn_submit,
+fieldset[disabled] .btn_submit:hover {
+  background-color: #888 !important;
+  color: #ccc !important;
+  cursor: not-allowed !important;
+}
+fieldset[disabled] .input_control,
+.hovertip.input_control:disabled,
+.hovertip.input_control[disabled] {
+  background-color: #f0f0f0 !important;
+  color: #aaa !important;
+  cursor: not-allowed !important;
+}
