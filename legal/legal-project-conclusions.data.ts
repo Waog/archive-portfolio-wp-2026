@@ -12,55 +12,75 @@
 // in conjunction with the Legal Project Facts Data.
 // ============================================================================
 
-import {
-  DEFINED_BY_PARENT,
-  DEFINED_PER_CHILD,
-  LegalProjectConclusions,
-} from './legal-project-conclusions.type';
-
-// TODO legal: retention rates of all kinds of data must be documented somehow. which granularity makes sense?
-// TODO legal: technically necessary vs. non-essential must be documented somehow. where and which granularity makes sense?
-// TODO legal: unsure how to model/handel tracking before consent true/false. figure it out and implement.
+import { LegalProjectConclusions } from "./legal-project-conclusions.type";
 
 export const legalProjectConclusionsData: LegalProjectConclusions = {
+  // reasons: ["Current regeneration date for this draft cycle."]
   legalDocumentMetadata: {
-    lastUpdated: '2026-04-24',
+    // reasons: ["Current date in Europe/Berlin as provided in prompt context."]
+    lastUpdated: "2026-05-25",
   },
 
   project: {
-    // reasons: [legalProjectFactsData.project.description]
-    websiteType: 'informational',
+    // reasons: [
+    //   legalProjectFactsData.project.description,
+    //   legalProjectFactsData.audience.notes,
+    //   "The currently modeled setup is an archive-style portfolio/informational website without modeled account, checkout, booking, or subscription flows."
+    // ]
+    websiteType: "informational",
   },
 
-  // reasons: [legalProjectFactsData.operator]
   operator: {
     // reasons: [
     //   legalProjectFactsData.operator.address.city,
-    //   "For a Berlin-based controller, the regular competent supervisory authority is the Berliner Beauftragte für Datenschutz und Informationsfreiheit.",
+    //   "Berlin operator -> competent private-sector supervisory authority is the Berliner Beauftragte für Datenschutz und Informationsfreiheit.",
+    //   "Official contact page: https://www.datenschutz-berlin.de/ueber-uns/kontakt/"
     // ]
     competentDataProtectionAuthority: {
-      name: 'Berliner Beauftragte für Datenschutz und Informationsfreiheit',
-      address: 'Alt-Moabit 59-61, 10555 Berlin, Germany',
-      email: 'mailbox@datenschutz-berlin.de',
-      phone: '+49 30 13889-0',
-      website: 'https://www.datenschutz-berlin.de/',
+      // reasons: ["Official authority designation on authority website."]
+      name: "Berliner Beauftragte für Datenschutz und Informationsfreiheit",
+      // reasons: ["Official authority contact page."]
+      address: "Alt-Moabit 59-61, 10555 Berlin, Germany",
+      // reasons: ["Official authority contact page."]
+      email: "mailbox@datenschutz-berlin.de",
+      // reasons: ["Official authority contact page."]
+      phone: "+49 30 13889-0",
+      // reasons: ["Official authority website."]
+      website: "https://www.datenschutz-berlin.de/",
     },
 
+    // reasons: [
+    //   legalProjectFactsData.operator.consumerDisputeResolution.willingToParticipateInConsumerArbitration,
+    //   legalProjectFactsData.operator.consumerDisputeResolution.employeeCountOnPreviousYearEnd,
+    //   legalProjectFactsData.operator.consumerDisputeResolution.preferredMentioning,
+    //   "§ 36(3) VSBG exempts businesses with ten or fewer employees from the general website/AGB information duty in § 36(1) no. 1 VSBG.",
+    //   "No fact indicates a separate sector-specific, contractual, or membership-based participation duty."
+    // ]
     consumerDisputeResolution: {
       // reasons: [
       //   legalProjectFactsData.operator.consumerDisputeResolution.willingToParticipateInConsumerArbitration,
-      //   legalProjectFactsData.operator.consumerDisputeResolution.employeeCountOnPreviousYearEnd,
-      //   legalProjectFactsData.operator.consumerDisputeResolution.preferredMentioning,
-      //   "VSBG § 36(3) exempts businesses with ten or fewer employees from the general § 36(1) no. 1 website/AGB information duty.",
-      //   "No facts indicate a statutory, contractual, membership-based, or sector-specific obligation to participate in consumer arbitration.",
+      //   "No known separate participation duty."
       // ]
       obligatedToParticipate: false,
+      // reasons: [
+      //   legalProjectFactsData.operator.consumerDisputeResolution.employeeCountOnPreviousYearEnd,
+      //   "§ 36(3) VSBG employee threshold exemption applies on the modeled facts."
+      // ]
       mentioningRequired: false,
+      // reasons: [
+      //   legalProjectFactsData.operator.consumerDisputeResolution.preferredMentioning,
+      //   "A short truthful non-participation notice is feasible and conservative."
+      // ]
       includeNotice: true,
-      inclusionReason: 'voluntary_conservative_notice',
+      // reasons: [
+      //   legalProjectFactsData.operator.consumerDisputeResolution.preferredMentioning,
+      //   "Notice is included voluntarily, not because the threshold-based website duty is modeled as applicable."
+      // ]
+      inclusionReason: "voluntary_conservative_notice",
+      // reasons: [legalProjectFactsData.operator.consumerDisputeResolution.notes]
       notes: [
-        'The short non-participation notice is included voluntarily and conservatively, not because the model concludes that § 36 VSBG requires it for this website.',
-        'The notice is consistent with the facts because the operator is not willing to participate and no participation obligation is known.',
+        "The short non-participation notice is included voluntarily and conservatively.",
+        "The modeled facts do not indicate any obligation to participate in consumer arbitration.",
       ],
     },
   },
@@ -71,17 +91,28 @@ export const legalProjectConclusionsData: LegalProjectConclusions = {
   userRelatedFeatures: {
     // reasons: [legalProjectFactsData.userRelatedFeatures.publicContactEmail]
     publicContactEmail: {
-      activityType: 'contact_requests',
-      purpose: 'communication',
-      dataCategories: ['contact_data', 'communication_data'],
+      // reasons: [legalProjectFactsData.userRelatedFeatures.publicContactEmail]
+      activityType: "contact_requests",
+      // reasons: [legalProjectFactsData.userRelatedFeatures.publicContactEmail]
+      purpose: "communication",
+      // reasons: [
+      //   legalProjectFactsData.userRelatedFeatures.publicContactEmail,
+      //   "Incoming email communications typically contain both contact details and message content."
+      // ]
+      dataCategories: ["contact_data", "communication_data"],
     },
 
     // reasons: [legalProjectFactsData.userRelatedFeatures.publicContactPhone]
     publicContactPhone: {
-      activityType: 'telephony',
-      purpose: 'telephony',
-      // reasons: [legalProjectFactsData.userRelatedFeatures.publicContactPhone, "phone calls involve both the contact data (phone number) and communication content of the call itself"]
-      dataCategories: ['contact_data', 'communication_data'],
+      // reasons: [legalProjectFactsData.userRelatedFeatures.publicContactPhone]
+      activityType: "telephony",
+      // reasons: [legalProjectFactsData.userRelatedFeatures.publicContactPhone]
+      purpose: "telephony",
+      // reasons: [
+      //   legalProjectFactsData.userRelatedFeatures.publicContactPhone,
+      //   "Phone communication involves the caller's phone/contact data and the communication itself."
+      // ]
+      dataCategories: ["contact_data", "communication_data"],
     },
 
     // reasons: [legalProjectFactsData.userRelatedFeatures.contactForm]
@@ -123,106 +154,115 @@ export const legalProjectConclusionsData: LegalProjectConclusions = {
   thirdParties: {
     github: {
       // reasons: [
-      //   "GitHub General Privacy Statement (address): https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+      //   "GitHub General Privacy Statement states that it applies to personal data processed by GitHub, Inc. or GitHub B.V. as controller: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
       // ]
-      officialCompanyName: 'GitHub, Inc.',
+      officialCompanyName: "GitHub B.V. / GitHub, Inc.",
       // reasons: [
-      //   "GitHub General Privacy Statement (address): https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+      //   "GitHub General Privacy Statement contact section lists both GitHub B.V. and GitHub, Inc. addresses: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
       // ]
       officialCompanyAddress:
-        'GitHub, Inc. 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, United States',
+        "Prins Bernhardplein 200, 1097JB Amsterdam, Netherlands; 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, United States",
 
       legallyRelevantUrls: {
+        // reasons: ["GitHub privacy statement."]
+        "Privacy Policy":
+          "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+        // reasons: ["GitHub Pages documentation."]
+        "GitHub Pages - Data Collection":
+          "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection",
         // reasons: [
-        //   "GitHub General Privacy Statement: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+        //   "GitHub customer terms / purchased products scope."
         // ]
-        'Privacy Policy':
-          'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement',
-        // reasons: [
-        //   "What is GitHub Pages? https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection",
-        // ]
-        'GitHub Pages - Data Collection':
-          'https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection',
-        // reasons: [
-        //   "GitHub Customer Terms (DPA availability): https://docs.github.com/en/site-policy/github-terms/github-customer-terms-of-service",
-        // ]
-        'Customer Terms':
-          'https://docs.github.com/en/site-policy/github-terms/github-customer-terms-of-service',
+        "Customer Terms": "https://github.com/customer-terms",
       },
 
       subServicesOrFeatures: {
         githubPages: {
           // reasons: [
           //   legalProjectFactsData.thirdParties.github.subServicesOrFeatures.githubPages,
-          //   "GitHub Pages logs IP addresses for security: https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection",
-          //   "GitHub international transfers (SCC + DPF): https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+          //   "GitHub Pages documentation states that when a GitHub Pages site is visited, the visitor's IP address is logged and stored for security purposes.",
+          //   "GitHub privacy statement describes GitHub/B.V./Inc. controller processing for websites, apps, and services displaying the statement."
           // ]
-          recipientType: 'independent_controller',
+          recipientType: "independent_controller",
 
           // reasons: [
-          //   "GitHub states that data is stored and processed in a variety of locations including local region, US and other countries: https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement",
+          //   "GitHub privacy statement: GitHub stores and processes personal data in a variety of locations, including local region, the United States, and other countries where GitHub, affiliates, subsidiaries, or subprocessors have operations."
           // ]
-          dataRecipientCountry: 'EU / USA (global processing)',
+          dataRecipientCountry:
+            "EU / USA / other countries where GitHub, its affiliates, subsidiaries or subprocessors operate",
 
           // reasons: [
-          //   "GitHub relies on SCC and states DPF compliance: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+          //   "GitHub privacy statement: DPF compliance and general SCC reliance for transfers."
           // ]
-          transferSafeguard: ['DPF', 'SCC'],
+          transferSafeguard: ["DPF", "SCC"],
 
           // reasons: [
-          //   "GitHub Customer Terms: GitHub Data Protection Agreement applies to certain products/plans; GitHub.com free services are typically controller context: https://docs.github.com/en/site-policy/github-terms/github-customer-terms-of-service",
+          //   legalProjectFactsData.thirdParties.github.subServicesOrFeatures.githubPages.planOrSubscription,
+          //   "The GitHub Customer Agreement / DPA scope is framed around purchased GitHub products (e.g. Enterprise Cloud, Enterprise, Teams, Copilot), not this modeled GitHub Pages free setup."
           // ]
+          // TODO assumptions made: The conclusion that there is no DPA is a plan-scope inference for the modeled GitHub Pages free setup.
+          // improvement suggestions: If this changes later, add an explicit facts note stating whether GitHub is used under a purchased customer agreement with DPA coverage.
           hasDpa: false,
 
           // reasons: [
           //   legalProjectFactsData.thirdParties.github.subServicesOrFeatures.githubPages,
-          //   "GitHub Pages visitor IP logging for security is documented here: https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection",
+          //   "GitHub Pages visitor IP logging is documented for security purposes."
           // ]
-          legalBases: ['article_6_1_f'],
+          legalBases: ["article_6_1_f"],
 
           // reasons: [legalProjectFactsData.thirdParties.github.subServicesOrFeatures.githubPages]
           activityType: [
-            'hosting_and_infrastructure',
-            'website_delivery_and_security',
+            "hosting_and_infrastructure",
+            "website_delivery_and_security",
           ],
 
           // reasons: [
           //   legalProjectFactsData.thirdParties.github.subServicesOrFeatures.githubPages,
-          //   "GitHub Pages data collection for security: https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection",
+          //   "Hosting, website delivery and security are the documented practical purposes of GitHub Pages traffic processing."
           // ]
-          purposes: ['hosting', 'website_delivery', 'security'],
+          purposes: ["hosting", "website_delivery", "security"],
 
           // reasons: [
-          //   "GitHub Pages logs IP addresses: https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection",
-          //   "GitHub Pages docs explicitly mention visitor IP addresses; standard hosting/request data implied.",
+          //   "GitHub Pages documents at least visitor IP logging.",
+          //   "GitHub privacy statement additionally describes service-usage and website-usage information such as IP address, device information, request/session details, pages viewed, and links clicked for GitHub services generally."
           // ]
           personalDataCategories: [
-            'online_identifier_data',
-            'device_technical_data',
-            'usage_behavior_data',
+            "online_identifier_data",
+            "device_technical_data",
+            "usage_behavior_data",
           ],
 
           // reasons: [
-          //   "GitHub Pages visitor IP addresses are logged and stored for security purposes: https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection",
+          //   "GitHub Pages visitor IP addresses are logged and stored for security purposes.",
+          //   "GitHub privacy statement says retention depends on purpose and legal obligations and refers to brief retention terms by design."
           // ]
           dataProcessing: {
             requestAndSecurityLogs: {
-              name: 'request and security logs',
+              // reasons: ["Descriptive label for the concrete GitHub Pages processing item."]
+              name: "request and security logs",
+              // reasons: ["This processing is required to deliver and secure the hosted site."]
               technicallyNecessary: true,
               // reasons: [
-              //   "GitHub General Privacy Statement states 'brief retention terms by design' and retention based on purpose/legal obligations: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
-              //   "GitHub does not publish a specific numeric retention period for GitHub Pages access logs.",
+              //   "GitHub Pages docs confirm security logging.",
+              //   "GitHub privacy statement describes variable retention tied to purpose/legal obligations and brief retention by design."
               // ]
-              // assumptions made: Exact numeric retention period not documented by GitHub; assumed to be a limited short-term period consistent with security purposes.
-              // improvement suggestions: No action possible from facts data; this is a GitHub documentation gap.
+              // TODO assumptions made: GitHub does not publish a fixed numeric retention period specific to GitHub Pages visitor logs.
+              // improvement suggestions: No project-facts change can solve this; this depends on GitHub's public documentation.
               retention:
-                "GitHub does not publicly specify an exact retention period for GitHub Pages access logs; GitHub's general privacy statement describes retention as limited to what is necessary for the stated purpose, with 'brief retention terms by design' as a stated practice. GitHub logs visitor IP addresses and other technical request data for security purposes; GitHub does states more generally that retention depends on purpose and legal obligations.",
+                "Technical request and security log data is retained by GitHub for a short period for security, abuse prevention, legal compliance, and service operation and is then deleted or otherwise retained only to the extent required by GitHub's retention rules.",
+              // reasons: ["GitHub Pages processing item is log-based."]
               serverLogs: true,
+              // reasons: ["No project-specific cookies were modeled in the canonical facts for this feature."]
               cookies: [],
+              // reasons: ["No project-specific browser localStorage was modeled in the canonical facts for this feature."]
               localStorage: [],
+              // reasons: ["No project-specific browser sessionStorage was modeled in the canonical facts for this feature."]
               sessionStorage: [],
+              // reasons: ["No project-specific browser IndexedDB usage was modeled in the canonical facts for this feature."]
               indexedDb: [],
+              // reasons: ["No project-specific service-worker user storage was modeled in the canonical facts for this feature."]
               serviceWorkerStorage: [],
+              // reasons: ["No additional modeled storage item for this feature."]
               otherStorage: [],
             },
           },
@@ -230,546 +270,110 @@ export const legalProjectConclusionsData: LegalProjectConclusions = {
       },
     },
 
-    cloudflare: {
-      // reasons: [
-      //   "Cloudflare GDPR Trust Hub: https://www.cloudflare.com/trust-hub/gdpr/",
-      // ]
-      officialCompanyName: 'Cloudflare, Inc.',
-      // reasons: [
-      //   "Cloudflare policies/contact: https://www.cloudflare.com/terms/",
-      // ]
-      officialCompanyAddress: '101 Townsend St, San Francisco, CA 94107, USA',
-
-      legallyRelevantUrls: {
-        // reasons: ["Cloudflare Privacy Policy: https://www.cloudflare.com/privacypolicy/"]
-        'Privacy Policy': 'https://www.cloudflare.com/privacypolicy/',
-        // reasons: ["Cloudflare Terms: https://www.cloudflare.com/terms/"]
-        'Terms of Service': 'https://www.cloudflare.com/terms/',
-        // reasons: [
-        //   "Cloudflare GDPR Trust Hub (SCC + DPF, processing locations): https://www.cloudflare.com/trust-hub/gdpr/",
-        // ]
-        'GDPR / Trust Hub': 'https://www.cloudflare.com/trust-hub/gdpr/',
-        // reasons: [
-        //   "Cloudflare DPA (referenced from Trust Hub): https://www.cloudflare.com/trust-hub/gdpr/",
-        // ]
-        DPA: 'https://www.cloudflare.com/cloudflare-customer-dpa/',
-        // reasons: [
-        //   "Cloudflare Web Analytics: https://www.cloudflare.com/web-analytics/",
-        // ]
-        'Web Analytics': 'https://www.cloudflare.com/web-analytics/',
-        // reasons: [
-        //   "Cloudflare changelog for excluding EU visitors from RUM: https://developers.cloudflare.com/changelog/post/2025-02-25-rum-exclude-eu/",
-        // ]
-        'RUM EU visitor exclusion':
-          'https://developers.cloudflare.com/changelog/post/2025-02-25-rum-exclude-eu/',
-      },
-
-      subServicesOrFeatures: {
-        cloudflare: {
-          // reasons: [
-          //   legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare,
-          //   "Cloudflare processes metadata in US and Europe; relies on SCC/DPF: https://www.cloudflare.com/trust-hub/gdpr/",
-          // ]
-          recipientType: DEFINED_PER_CHILD,
-
-          // reasons: [
-          //   "Cloudflare processes metadata in US and Europe: https://www.cloudflare.com/trust-hub/gdpr/",
-          // ]
-          dataRecipientCountry: 'USA (processing in U.S. and Europe)',
-
-          // reasons: [
-          //   "Cloudflare SCC + DPF: https://www.cloudflare.com/trust-hub/gdpr/",
-          // ]
-          transferSafeguard: ['DPF', 'SCC'],
-
-          // reasons: [
-          //   "Cloudflare provides standard customer DPA (processor context): https://www.cloudflare.com/cloudflare-customer-dpa/",
-          // ]
-          hasDpa: true,
-
-          // reasons: [legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare]
-          legalBases: DEFINED_PER_CHILD,
-
-          // reasons: [legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare]
-          activityType: DEFINED_PER_CHILD,
-
-          // reasons: [legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare]
-          purposes: DEFINED_PER_CHILD,
-
-          // reasons: [legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare]
-          personalDataCategories: DEFINED_PER_CHILD,
-
-          // reasons: [legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare]
-          dataProcessing: DEFINED_PER_CHILD,
-
-          subServicesOrFeatures: {
-            proxiedDns: {
-              // reasons: [
-              //   legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare.subServicesOrFeatures.proxiedDns,
-              //   "Cloudflare processes network metadata (IP) on behalf of customers: https://www.cloudflare.com/trust-hub/gdpr/",
-              // ]
-              recipientType: 'processor',
-              dataRecipientCountry: DEFINED_BY_PARENT,
-              transferSafeguard: DEFINED_BY_PARENT,
-              hasDpa: DEFINED_BY_PARENT,
-              legalBases: ['article_6_1_f'],
-              activityType: [
-                'dns_and_network_routing',
-                'website_delivery_and_security',
-              ],
-              purposes: ['network_routing', 'security'],
-              personalDataCategories: [
-                'online_identifier_data',
-                'device_technical_data',
-              ],
-              dataProcessing: {
-                dnsRequestProcessing: {
-                  name: 'DNS request processing',
-                  technicallyNecessary: true,
-                  // reasons: [
-                  //   "Cloudflare free plan: DNS analytics dashboard shows aggregate data for approximately 1 week; raw DNS log access is not offered to free-plan customers; https://www.cloudflare.com/trust-hub/gdpr/",
-                  //   "Cloudflare internally processes log metadata for a limited period per its privacy policy.",
-                  // ]
-                  retention:
-                    "DNS request metadata is processed by Cloudflare in real time for routing and security; on the free plan, DNS Analytics shows aggregate data for approximately 1 week in the dashboard; raw DNS log retention is not separately offered to free-plan customers and is governed by Cloudflare's internal data practices.",
-                  serverLogs: true,
-                  cookies: [],
-                  localStorage: [],
-                  sessionStorage: [],
-                  indexedDb: [],
-                  serviceWorkerStorage: [],
-                  otherStorage: [],
-                },
-              },
-            },
-
-            dnsAnalytics: {
-              // reasons: [
-              //   legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare.subServicesOrFeatures.dnsAnalytics,
-              //   "Cloudflare maintains and processes log metadata for limited time: https://www.cloudflare.com/trust-hub/gdpr/",
-              // ]
-              recipientType: 'processor',
-              dataRecipientCountry: DEFINED_BY_PARENT,
-              transferSafeguard: DEFINED_BY_PARENT,
-              hasDpa: DEFINED_BY_PARENT,
-              legalBases: ['article_6_1_f'],
-              activityType: ['dns_and_network_routing', 'analytics'],
-              purposes: ['analytics', 'security'],
-              personalDataCategories: [
-                'online_identifier_data',
-                'device_technical_data',
-                'usage_behavior_data',
-              ],
-              dataProcessing: {
-                dnsAnalytics: {
-                  name: 'DNS analytics dashboards',
-                  technicallyNecessary: true,
-                  retention:
-                    'Aggregate and log-based DNS analytics for operational visibility and security; underlying log metadata is processed for a limited period depending on Cloudflare settings. DNS analytics data is made available in the dashboard on the free plan with up to 8 days of historical zone data and a maximum 7-day query interval.',
-                  serverLogs: true,
-                  cookies: [],
-                  localStorage: [],
-                  sessionStorage: [],
-                  indexedDb: [],
-                  serviceWorkerStorage: [],
-                  otherStorage: [],
-                },
-              },
-            },
-
-            cdn: {
-              // reasons: [
-              //   legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare.subServicesOrFeatures.cdn,
-              //   "Cloudflare processes request metadata incl. IP; content largely stays at edge; metadata in US/EU: https://www.cloudflare.com/trust-hub/gdpr/",
-              // ]
-              recipientType: 'processor',
-              dataRecipientCountry: DEFINED_BY_PARENT,
-              transferSafeguard: DEFINED_BY_PARENT,
-              hasDpa: DEFINED_BY_PARENT,
-              legalBases: ['article_6_1_f'],
-              activityType: [
-                'content_delivery',
-                'website_delivery_and_security',
-              ],
-              purposes: [
-                'content_delivery',
-                'website_delivery',
-                'security',
-                'performance_optimization',
-              ],
-              personalDataCategories: [
-                'online_identifier_data',
-                'device_technical_data',
-                'usage_behavior_data',
-                'location_data',
-              ],
-              dataProcessing: {
-                cdnCachingAndDelivery: {
-                  name: 'CDN caching and delivery',
-                  technicallyNecessary: true,
-                  // reasons: [
-                  //   "Cloudflare free plan: raw HTTP log access (Logpull/Logpush) requires Enterprise plan; https://community.cloudflare.com/t/traffic-logs-available-for-paid-plan/493400",
-                  //   "Cloudflare internally retains underlying log data for a limited period per its privacy policy; aggregated HTTP metrics visible in dashboard for approximately 1 week on free plan.",
-                  //   "Cloudflare GDPR docs confirm metadata processing and limited periods, but do not publish one fixed CDN-metadata retention period for this setup.",
-                  // ]
-                  retention:
-                    "Request metadata (incl. IP) is processed in real time by Cloudflare's CDN; on the free plan, persistent access-log storage (Logpush) is not available to the customer; Cloudflare internally retains underlying log data for a limited period consistent with its privacy policy; aggregated HTTP traffic metrics are visible in the dashboard for approximately 1 week.",
-                  serverLogs: true,
-                  cookies: [],
-                  localStorage: [],
-                  sessionStorage: [],
-                  indexedDb: [],
-                  serviceWorkerStorage: [],
-                  otherStorage: [],
-                },
-              },
-            },
-
-            httpTraffic: {
-              // reasons: [
-              //   legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare.subServicesOrFeatures.httpTraffic,
-              //   "Cloudflare HTTP analytics/logging uses request metadata incl. IPs; metadata in US/EU: https://www.cloudflare.com/trust-hub/gdpr/",
-              // ]
-              recipientType: 'processor',
-              dataRecipientCountry: DEFINED_BY_PARENT,
-              transferSafeguard: DEFINED_BY_PARENT,
-              hasDpa: DEFINED_BY_PARENT,
-              legalBases: ['article_6_1_f'],
-              activityType: ['website_delivery_and_security', 'analytics'],
-              purposes: ['security', 'analytics', 'performance_optimization'],
-              personalDataCategories: [
-                'online_identifier_data',
-                'device_technical_data',
-                'usage_behavior_data',
-              ],
-              dataProcessing: {
-                httpTrafficAnalytics: {
-                  name: 'HTTP traffic analytics/log insights',
-                  technicallyNecessary: true,
-                  // reasons: [
-                  //   "Cloudflare free plan dashboard shows HTTP traffic analytics for approximately 1 week; detailed raw log access (Logpull) is Enterprise-only: https://community.cloudflare.com/t/traffic-logs-available-for-paid-plan/493400",
-                  //   "Cloudflare internally processes the underlying log data for a limited period per its privacy policy.",
-                  // ]
-                  retention:
-                    'Aggregated HTTP traffic metrics are visible in the Cloudflare dashboard for approximately 1 week on the free plan; detailed raw HTTP log access requires paid (Enterprise) plans; Cloudflare internally processes the underlying request data for a limited period per its privacy policy.',
-                  serverLogs: true,
-                  cookies: [],
-                  localStorage: [],
-                  sessionStorage: [],
-                  indexedDb: [],
-                  serviceWorkerStorage: [],
-                  otherStorage: [],
-                },
-              },
-            },
-
-            performance: {
-              // reasons: [
-              //   legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare.subServicesOrFeatures.performance,
-              //   "Cloudflare performance analytics uses request/performance metadata.",
-              // ]
-              recipientType: 'processor',
-              dataRecipientCountry: DEFINED_BY_PARENT,
-              transferSafeguard: DEFINED_BY_PARENT,
-              hasDpa: DEFINED_BY_PARENT,
-              legalBases: ['article_6_1_f'],
-              activityType: ['analytics'],
-              purposes: ['performance_optimization', 'analytics'],
-              personalDataCategories: [
-                'online_identifier_data',
-                'device_technical_data',
-                'usage_behavior_data',
-              ],
-              dataProcessing: {
-                performanceDashboards: {
-                  name: 'performance analytics dashboards',
-                  technicallyNecessary: true,
-                  retention:
-                    'Performance metrics derived from request/usage metadata; retained according to Cloudflare analytics/log configuration.',
-                  serverLogs: true,
-                  cookies: [],
-                  localStorage: [],
-                  sessionStorage: [],
-                  indexedDb: [],
-                  serviceWorkerStorage: [],
-                  otherStorage: [],
-                },
-              },
-            },
-
-            webAnalytics: {
-              // reasons: [
-              //   legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare.subServicesOrFeatures.webAnalytics,
-              //   "Cloudflare Web Analytics is designed to be cookie-free: https://www.cloudflare.com/web-analytics/",
-              // ]
-              recipientType: 'processor',
-              dataRecipientCountry: DEFINED_BY_PARENT,
-              transferSafeguard: DEFINED_BY_PARENT,
-              hasDpa: DEFINED_BY_PARENT,
-              legalBases: ['article_6_1_f'],
-              activityType: ['analytics'],
-              purposes: ['analytics', 'performance_optimization'],
-              personalDataCategories: [
-                'usage_behavior_data',
-                'device_technical_data',
-                'online_identifier_data',
-              ],
-              dataProcessing: {
-                webAnalytics: {
-                  name: 'Cloudflare Web Analytics (JS)',
-                  technicallyNecessary: false,
-                  // reasons: [
-                  //   "Cloudflare RUM beacon documentation states that free customers have RUM enabled automatically with EU traffic excluded and can switch it off: https://developers.cloudflare.com/speed/observatory/rum-beacon/",
-                  //   "Cloudflare RUM documentation states that the beacon does not store browser data and does not access cookies, localStorage, sessionStorage, IP address, or IndexedDB: https://developers.cloudflare.com/speed/observatory/rum-beacon/",
-                  //   "Cloudflare changelog states that excluded EU metrics are dropped automatically: https://developers.cloudflare.com/changelog/post/2025-02-25-rum-exclude-eu/",
-                  // ]
-                  retention:
-                    'Cloudflare Web Analytics / RUM analytics values are currently accessible for up to 6 months where the service is active for the respective non-excluded visitor; EU/EEA/CH/GB-excluded visitors are not measured by RUM according to the current configuration.',
-                  thirdPartyScripts: [
-                    'Cloudflare Web Analytics / RUM JS snippet (auto-injected for non-excluded visitors; not injected or not active for excluded EEA/EU/CH/GB-region visitors according to the current configuration and provider documentation)',
-                  ],
-                  trackingBeforeConsent: true,
-                  cookies: [],
-                  localStorage: [],
-                  sessionStorage: [],
-                  indexedDb: [],
-                  serviceWorkerStorage: [],
-                  otherStorage: [],
-                },
-              },
-              subServicesOrFeatures: {
-                realUserMeasurements: {
-                  // reasons: [
-                  //   legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare.subServicesOrFeatures.webAnalytics.subServicesOrFeatures.realUserMeasurements,
-                  //   "RUM is part of the same Cloudflare Web Analytics JS snippet; the current project configuration excludes EU visitor data.",
-                  //   "Cloudflare RUM beacon documentation describes exclusion for users connecting to Cloudflare data centers in the EEA/EU plus listed additional countries including CH and GB.",
-                  //   "Cloudflare RUM beacon documentation states that the beacon does not store browser data and does not access cookies, localStorage, sessionStorage, IP address, or IndexedDB.",
-                  // ]
-                  recipientType: 'processor',
-                  dataRecipientCountry: DEFINED_BY_PARENT,
-                  transferSafeguard: DEFINED_BY_PARENT,
-                  hasDpa: DEFINED_BY_PARENT,
-                  legalBases: ['article_6_1_f'],
-                  activityType: ['analytics'],
-                  purposes: ['analytics', 'performance_optimization'],
-                  personalDataCategories: [
-                    'usage_behavior_data',
-                    'device_technical_data',
-                    'online_identifier_data',
-                  ],
-                  dataProcessing: {
-                    rum: {
-                      name: 'Real User Measurements (RUM)',
-                      technicallyNecessary: false,
-                      // reasons: [
-                      //   "RUM data is part of Cloudflare Web Analytics; same 6-month dashboard availability applies where the feature is active.",
-                      //   "Cloudflare RUM beacon documentation states that excluded users are not processed for RUM performance data.",
-                      // ]
-                      retention:
-                        'RUM data for non-excluded visitors is processed as part of Cloudflare Web Analytics and analytics values are currently accessible for up to 6 months. For users connecting to excluded EEA/EU/CH/GB-region Cloudflare data centers, RUM performance data is not processed according to Cloudflare documentation.',
-                      thirdPartyScripts: [
-                        'Cloudflare RUM / Web Analytics JS (auto-injected for non-excluded visitors; not injected or not active for excluded EEA/EU/CH/GB-region visitors according to the current configuration and provider documentation)',
-                      ],
-                      trackingBeforeConsent: true,
-                      cookies: [],
-                      localStorage: [],
-                      sessionStorage: [],
-                      indexedDb: [],
-                      serviceWorkerStorage: [],
-                      otherStorage: [],
-                    },
-                  },
-                },
-              },
-            },
-
-            emailRouting: {
-              // reasons: [
-              //   legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare.subServicesOrFeatures.emailRouting,
-              //   "Cloudflare Email Routing feature docs: https://developers.cloudflare.com/email-routing/",
-              // ]
-              recipientType: 'processor',
-              dataRecipientCountry: DEFINED_BY_PARENT,
-              transferSafeguard: DEFINED_BY_PARENT,
-              hasDpa: DEFINED_BY_PARENT,
-              legalBases: ['article_6_1_b', 'article_6_1_f'],
-              activityType: ['customer_communication'],
-              purposes: ['communication', 'spam_prevention', 'security'],
-              personalDataCategories: ['contact_data', 'communication_data'],
-              dataProcessing: {
-                emailForwarding: {
-                  name: 'email forwarding/routing',
-                  technicallyNecessary: true,
-                  // reasons: [
-                  //   "Cloudflare Email Routing forwards emails without storing email content; routing activity logs are retained for a limited operational period per Cloudflare data practices; no specific numeric retention period is documented by Cloudflare for Email Routing logs.",
-                  //   "Cloudflare Email Routing analytics docs state that summary views and Activity Log can be filtered for periods up to 30 days: https://developers.cloudflare.com/email-routing/get-started/email-routing-analytics/",
-                  // ]
-                  // assumptions made: Exact retention period for Cloudflare Email Routing activity logs is not documented; assumed to be a short operational period.
-                  // improvement suggestions: No action possible from facts data; this is a Cloudflare documentation gap.
-                  retention:
-                    "Cloudflare Email Routing forwards emails in transit without storing or accessing email content; routing activity logs (metadata: sender/recipient/timestamp) are retained for a limited operational period per Cloudflare's data practices; Cloudflare does not publicly specify the exact retention duration for Email Routing activity logs.",
-                  cookies: [],
-                  localStorage: [],
-                  sessionStorage: [],
-                  indexedDb: [],
-                  serviceWorkerStorage: [],
-                  otherStorage: [],
-                },
-              },
-            },
-
-            dmarcManagement: {
-              // reasons: [
-              //   legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare.subServicesOrFeatures.dmarcManagement,
-              //   "Cloudflare DMARC Management processes DMARC reports on customer behalf: https://developers.cloudflare.com/dmarc-management/enable/",
-              // ]
-              recipientType: 'processor',
-              dataRecipientCountry: DEFINED_BY_PARENT,
-              transferSafeguard: DEFINED_BY_PARENT,
-              hasDpa: DEFINED_BY_PARENT,
-              legalBases: ['article_6_1_f'],
-              activityType: ['website_delivery_and_security'],
-              purposes: ['security', 'fraud_prevention'],
-              personalDataCategories: [
-                'online_identifier_data',
-                'device_technical_data',
-              ],
-              dataProcessing: {
-                dmarcReports: {
-                  name: 'DMARC report processing',
-                  technicallyNecessary: true,
-                  // reasons: [
-                  //   "Cloudflare DMARC Management retains report data in the dashboard for a limited period; no specific numeric retention period is publicly documented by Cloudflare for this feature.",
-                  // ]
-                  // assumptions made: Exact retention period for Cloudflare DMARC report data is not documented; assumed to be a limited operational period.
-                  // improvement suggestions: No action possible from facts data; this is a Cloudflare documentation gap.
-                  retention:
-                    "DMARC aggregate report data is processed and accessible in the Cloudflare DMARC Management dashboard; Cloudflare does not publicly specify the exact retention period for DMARC report data; data is retained for a limited operational period per Cloudflare's data practices.",
-                  cookies: [],
-                  localStorage: [],
-                  sessionStorage: [],
-                  indexedDb: [],
-                  serviceWorkerStorage: [],
-                  otherStorage: [],
-                },
-              },
-            },
-
-            // reasons: [
-            //   legalProjectFactsData.thirdParties.cloudflare.subServicesOrFeatures.cloudflare.subServicesOrFeatures.networkErrorLogging,
-            //   "Cloudflare Network Error Logging can add NEL / Report-To headers that instruct compatible browsers to send network-error reports to Cloudflare; the operator has disabled Network Error Logging Monitoring, so it is modeled as unused.",
-            //   "Cloudflare Network Error Logging documentation: https://developers.cloudflare.com/network-error-logging/",
-            // ]
-            networkErrorLogging: null,
-            waf: null,
-            botFightMode: null,
-            superBotFightMode: null,
-            rateLimiting: null,
-            turnstile: null,
-            zaraz: null,
-            waitingRoom: null,
-            loadBalancer: null,
-          },
-        },
-      },
-    },
-
     smtp2go: {
-      // reasons: [
-      //   "SMTP2GO Privacy Policy (company details): https://www.smtp2go.com/privacy",
-      // ]
-      officialCompanyName: 'Sand Dune Mail Ltd.',
-      // reasons: [
-      //   "SMTP2GO Privacy Policy (company details): https://www.smtp2go.com/privacy",
-      // ]
+      // reasons: ["SMTP2GO privacy policy company details."]
+      officialCompanyName: "Sand Dune Mail Ltd.",
+      // reasons: ["SMTP2GO privacy policy company details."]
       officialCompanyAddress:
-        'Sand Dune Mail Ltd., 96-106 Manchester Street, Christchurch 8011, New Zealand',
+        "96-106 Manchester Street, Christchurch 8011, New Zealand",
 
       legallyRelevantUrls: {
-        // reasons: ["SMTP2GO Privacy Policy: https://www.smtp2go.com/privacy"]
-        'Privacy Policy': 'https://www.smtp2go.com/privacy',
-        // reasons: ["SMTP2GO Terms: https://www.smtp2go.com/terms/"]
-        Terms: 'https://www.smtp2go.com/terms/',
-        // reasons: [
-        //   "SMTP2GO Vendor Info (DPA + retention): https://support.smtp2go.com/hc/en-gb/articles/14855846048665-Vendor-Information",
-        // ]
-        'Vendor Information (DPA/Retention)':
-          'https://support.smtp2go.com/hc/en-gb/articles/14855846048665-Vendor-Information',
-        // reasons: [
-        //   "SMTP2GO EU Data Center: https://support.smtp2go.com/hc/en-gb/articles/12974008254873-EU-Data-Center",
-        // ]
-        'EU Data Center':
-          'https://support.smtp2go.com/hc/en-gb/articles/12974008254873-EU-Data-Center',
-        // reasons: [
-        //   "SMTP2GO Activity Storage Duration: https://support.smtp2go.com/hc/en-gb/articles/27243944323737-Activity-Storage-Duration",
-        // ]
-        'Activity Storage Duration':
-          'https://support.smtp2go.com/hc/en-gb/articles/27243944323737-Activity-Storage-Duration',
-        // reasons: [
-        //   "SMTP2GO Verify Data Center Location: https://support.smtp2go.com/hc/en-gb/articles/360005171574-Verify-Your-Data-Center-Location",
-        // ]
-        'Verify Data Center Location':
-          'https://support.smtp2go.com/hc/en-gb/articles/360005171574-Verify-Your-Data-Center-Location',
+        // reasons: ["SMTP2GO privacy policy."]
+        "Privacy Policy": "https://www.smtp2go.com/privacy/",
+        // reasons: ["SMTP2GO terms."]
+        Terms: "https://www.smtp2go.com/terms/",
+        // reasons: ["SMTP2GO vendor information article."]
+        "Vendor Information (DPA)":
+          "https://support.smtp2go.com/hc/en-gb/articles/14855846048665-Vendor-Information",
+        // reasons: ["SMTP2GO EU data center article."]
+        "EU Data Center":
+          "https://support.smtp2go.com/hc/en-gb/articles/12974008254873-EU-Data-Center",
+        // reasons: ["SMTP2GO data center verification article."]
+        "Verify Data Center Location":
+          "https://support.smtp2go.com/hc/en-gb/articles/360005171574-Verify-Your-Data-Center-Location",
+        // reasons: ["SMTP2GO activity storage duration article."]
+        "Activity Storage Duration":
+          "https://support.smtp2go.com/hc/en-gb/articles/27243944323737-Activity-Storage-Duration",
       },
 
       subServicesOrFeatures: {
         smtp2go: {
           // reasons: [
           //   legalProjectFactsData.thirdParties.smtp2go.subServicesOrFeatures.smtp2go,
-          //   "SMTP2GO provides DPA in dashboard: https://support.smtp2go.com/hc/en-gb/articles/14855846048665-Vendor-Information",
-          //   "EU data center + deletion after 35 days default: https://support.smtp2go.com/hc/en-gb/articles/12974008254873-EU-Data-Center",
+          //   "SMTP2GO offers a DPA in the account dashboard and is used here for outbound email delivery on behalf of the operator."
           // ]
-          recipientType: 'processor',
+          recipientType: "processor",
 
           // reasons: [
           //   legalProjectFactsData.thirdParties.smtp2go.subServicesOrFeatures.smtp2go.notes,
-          //   "SMTP2GO EU data center in Amsterdam for EU/UK customers: https://support.smtp2go.com/hc/en-gb/articles/12974008254873-EU-Data-Center",
+          //   "SMTP2GO EU data center article states EU-based data center in Amsterdam and EU/UK local infrastructure.",
+          //   "Provider company is established in New Zealand."
           // ]
-          dataRecipientCountry: 'EU (Amsterdam)',
+          dataRecipientCountry: "EU / New Zealand",
 
           // reasons: [
-          //   "EU processing stated for EU/UK SMTP services: https://support.smtp2go.com/hc/en-gb/articles/12974008254873-EU-Data-Center",
+          //   "EU Commission adequacy page lists New Zealand as an adequate country under Article 45 GDPR.",
+          //   "SMTP2GO is a New Zealand company while the modeled account is EU-hosted."
           // ]
-          transferSafeguard: ['none'],
+          // TODO assumptions made: The modeled account is treated as EU-hosted based on facts notes and SMTP2GO's documented dashboard region logic.
+          // improvement suggestions: Record the exact dashboard footer text and, if relevant, the configured EU-only endpoint in project facts notes.
+          transferSafeguard: ["adequacy_decision"],
 
           // reasons: [
           //   legalProjectFactsData.thirdParties.smtp2go.subServicesOrFeatures.smtp2go.notes,
-          //   "SMTP2GO provides DPA in dashboard: https://support.smtp2go.com/hc/en-gb/articles/14855846048665-Vendor-Information",
+          //   "Facts notes state that the DPA was accepted on 2026-03-30.",
+          //   "SMTP2GO vendor article explains where to review the DPA in-dashboard."
           // ]
           hasDpa: true,
 
-          // reasons: [legalProjectFactsData.thirdParties.smtp2go.subServicesOrFeatures.smtp2go]
-          legalBases: ['article_6_1_b', 'article_6_1_f'],
+          // reasons: [
+          //   legalProjectFactsData.thirdParties.smtp2go.subServicesOrFeatures.smtp2go.notes,
+          //   "Used for sending emails to users and therefore for communication / possible pre-contractual communication."
+          // ]
+          legalBases: ["article_6_1_b", "article_6_1_f"],
 
           // reasons: [legalProjectFactsData.thirdParties.smtp2go.subServicesOrFeatures.smtp2go]
-          activityType: ['customer_communication'],
+          activityType: ["customer_communication"],
 
           // reasons: [legalProjectFactsData.thirdParties.smtp2go.subServicesOrFeatures.smtp2go]
-          purposes: ['communication', 'support'],
+          purposes: ["communication", "support"],
 
           // reasons: [
-          //   "SMTP2GO processes email activity/log data and (optionally) content when enabled; default is activity-level storage: https://support.smtp2go.com/hc/en-gb/articles/14855846048665-Vendor-Information",
+          //   "SMTP2GO processes recipient/sender details, message metadata, delivery events, and -- if separately enabled -- message body/archive data."
           // ]
           personalDataCategories: [
-            'contact_data',
-            'communication_data',
-            'online_identifier_data',
+            "contact_data",
+            "communication_data",
+            "online_identifier_data",
           ],
 
           // reasons: [
-          //   "Default deletion after 35 days; visibility differs by plan: https://support.smtp2go.com/hc/en-gb/articles/12974008254873-EU-Data-Center",
+          //   "SMTP2GO EU data center article: free plan visibility 5 days, then deleted after 35 days by default.",
+          //   "SMTP2GO activity retention article: dashboard/API activity data retention logic.",
+          //   "Facts do not indicate paid archiving is enabled."
           // ]
           dataProcessing: {
             outboundEmailDelivery: {
-              name: 'email sending / delivery logs',
+              // reasons: ["Descriptive label for SMTP mail-delivery activity."]
+              name: "outbound email delivery and delivery logs",
+              // reasons: ["This processing is required to send emails through SMTP2GO."]
               technicallyNecessary: true,
+              // reasons: [
+              //   "SMTP2GO current free-plan and EU data center documentation."
+              // ]
               retention:
-                'SMTP2GO distinguishes activity visibility/storage and deletion. For the free plan, activity data visibility is limited to 5 days and cannot be extended. SMTP2GO separately states that, by default, activity/email-header data is deleted after 35 days. Optional Email Archiving, which can store full email content, attachments and delivery details for longer periods, is a separate paid feature and is not used in this project.',
+                "According to SMTP2GO’s current documentation, activity data on the free plan is visible for 5 days and, by default, activity/header data is deleted after 35 days. Paid archiving for storing full email contents, attachments, and delivery details for longer periods is not used in this modeled setup.",
+              // reasons: ["No project-specific cookies were modeled for this provider usage."]
               cookies: [],
+              // reasons: ["No project-specific localStorage was modeled for this provider usage."]
               localStorage: [],
+              // reasons: ["No project-specific sessionStorage was modeled for this provider usage."]
               sessionStorage: [],
+              // reasons: ["No project-specific IndexedDB was modeled for this provider usage."]
               indexedDb: [],
+              // reasons: ["No project-specific service-worker user storage was modeled for this provider usage."]
               serviceWorkerStorage: [],
+              // reasons: ["No additional modeled browser storage item."]
               otherStorage: [],
             },
           },
@@ -778,79 +382,96 @@ export const legalProjectConclusionsData: LegalProjectConclusions = {
     },
 
     google: {
-      // reasons: [
-      //   "Google Germany legal notice (Diensteanbieterin): https://www.google.de/contact/impressum.html",
-      // ]
-      officialCompanyName: 'Google Ireland Limited',
-      // reasons: [
-      //   "Google Germany legal notice: https://www.google.de/contact/impressum.html",
-      // ]
-      officialCompanyAddress: 'Gordon House, Barrow Street, Dublin 4, Ireland',
+      // reasons: ["Google DE legal notice / EEA services provider details."]
+      officialCompanyName: "Google Ireland Limited",
+      // reasons: ["Google DE legal notice."]
+      officialCompanyAddress: "Gordon House, Barrow Street, Dublin 4, Ireland",
 
       legallyRelevantUrls: {
-        // reasons: ["Google Privacy Policy: https://policies.google.com/privacy"]
-        'Privacy Policy': 'https://policies.google.com/privacy',
-        // reasons: ["Google Terms: https://policies.google.com/terms"]
-        'Terms of Service': 'https://policies.google.com/terms',
-        // reasons: [
-        //   "Google data transfer frameworks (DPF + SCC): https://policies.google.com/privacy/frameworks?hl=en-US",
-        // ]
-        'Data transfer frameworks':
-          'https://policies.google.com/privacy/frameworks?hl=en-US',
-        // reasons: [
-        //   "Google Germany legal notice: https://www.google.de/contact/impressum.html",
-        // ]
-        'Legal notice (DE)': 'https://www.google.de/contact/impressum.html',
+        // reasons: ["Google privacy policy."]
+        "Privacy Policy": "https://policies.google.com/privacy?hl=de",
+        // reasons: ["Google terms."]
+        "Terms of Service": "https://policies.google.com/terms",
+        // reasons: ["Google transfer frameworks page."]
+        "Data transfer frameworks":
+          "https://policies.google.com/privacy/frameworks?hl=en-US",
+        // reasons: ["Google DE legal notice."]
+        "Legal notice (DE)": "https://www.google.de/contact/impressum.html",
+        // reasons: ["Gmail help on trash deletion."]
+        "Gmail deletion help":
+          "https://support.google.com/mail/answer/7401?co=GENIE.Platform%3DDesktop&hl=en",
       },
 
       subServicesOrFeatures: {
         gmail: {
           // reasons: [
           //   legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail,
-          //   "Google consumer services EU controller is Google Ireland Limited: https://policies.google.com/faq?hl=en",
+          //   "The facts expressly state that free consumer Gmail, not Google Workspace, is used.",
+          //   "Google privacy policy identifies Google Ireland Limited as controller for EEA / Switzerland users of Google services unless service-specific notices say otherwise."
           // ]
-          recipientType: 'independent_controller',
+          recipientType: "independent_controller",
 
           // reasons: [
-          //   "Google maintains servers around the world; processing may occur outside country: https://policies.google.com/privacy/frameworks?hl=en-US",
+          //   "Google transfer frameworks page states Google maintains servers around the world and data may be processed outside the country of residence."
           // ]
-          dataRecipientCountry: 'Ireland / USA (global processing)',
+          dataRecipientCountry: "Ireland / USA / global infrastructure",
 
           // reasons: [
-          //   "Google DPF certification + SCCs described: https://policies.google.com/privacy/frameworks?hl=en-US",
+          //   "Google transfer frameworks page states DPF compliance and SCC usage."
           // ]
-          transferSafeguard: ['DPF', 'SCC'],
-
-          // reasons: [legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail.notes]
-          hasDpa: false,
-
-          // reasons: [legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail]
-          legalBases: ['article_6_1_b', 'article_6_1_f'],
-
-          // reasons: [legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail]
-          activityType: ['customer_communication', 'contact_requests'],
-
-          // reasons: [legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail]
-          purposes: ['communication', 'support', 'storage'],
-
-          // reasons: [legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail]
-          personalDataCategories: ['contact_data', 'communication_data'],
+          transferSafeguard: ["DPF", "SCC"],
 
           // reasons: [
           //   legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail.notes,
-          //   "Gmail Help states that deleted messages remain in Trash for up to 30 days before permanent deletion: https://support.google.com/mail/answer/7401?hl=en",
+          //   "Facts state consumer Gmail is used, not Google Workspace."
+          // ]
+          hasDpa: false,
+
+          // reasons: [
+          //   legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail.notes,
+          //   "Communication can be general inquiry handling or pre-contractual/contractual correspondence depending on content."
+          // ]
+          legalBases: ["article_6_1_b", "article_6_1_f"],
+
+          // reasons: [legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail]
+          activityType: ["customer_communication", "contact_requests"],
+
+          // reasons: [legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail]
+          purposes: ["communication", "support", "storage"],
+
+          // reasons: [
+          //   legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail,
+          //   "Mailbox processing concerns contact details and communication contents."
+          // ]
+          personalDataCategories: ["contact_data", "communication_data"],
+
+          // reasons: [
+          //   legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail.notes,
+          //   "Gmail help states deleted messages remain in Trash for up to 30 days before permanent deletion."
           // ]
           dataProcessing: {
             mailboxStorage: {
-              name: 'email mailbox storage and processing',
+              // reasons: ["Descriptive label for Gmail mailbox usage."]
+              name: "email mailbox storage and processing",
+              // reasons: ["Mailbox processing is necessary to receive and handle email communication."]
               technicallyNecessary: true,
+              // reasons: [
+              //   legalProjectFactsData.thirdParties.google.subServicesOrFeatures.gmail.notes,
+              //   "Gmail help trash/deletion logic."
+              // ]
               retention:
-                'Spam, misdirected, and clearly irrelevant emails are deleted promptly or after a short operational buffer period. Other communication data is generally stored until the matter is concluded. Ordinary business correspondence without statutory retention duties is then generally kept for 3 years from the end of the calendar year of the last relevant contact for documentation and legal-claims purposes. Emails subject to German commercial, tax, or accounting retention duties are generally kept for 6 or 8 years from the end of the relevant calendar year. Where multiple retention grounds apply or data remains needed for ongoing claims, audits, or disputes, the longer period applies. Deleted messages in Gmail typically remain in Trash for up to 30 days before permanent deletion.',
+                "Spam, misdirected, and clearly irrelevant emails are deleted promptly or after a short operational buffer period. Other communication data is generally stored until the matter is concluded. Ordinary business correspondence without statutory retention duties is then generally kept for 3 years from the end of the calendar year of the last relevant contact for documentation and legal-claims purposes. Emails subject to German commercial, tax, or accounting retention duties are generally kept for 6 or 8 years from the end of the relevant calendar year. Where multiple retention grounds apply or data remains needed for ongoing claims, audits, or disputes, the longer period applies. Deleted messages in Gmail typically remain in Trash for up to 30 days before permanent deletion.",
+              // reasons: ["No project-specific cookies were modeled for this mailbox usage."]
               cookies: [],
+              // reasons: ["No project-specific localStorage was modeled for this mailbox usage."]
               localStorage: [],
+              // reasons: ["No project-specific sessionStorage was modeled for this mailbox usage."]
               sessionStorage: [],
+              // reasons: ["No project-specific IndexedDB was modeled for this mailbox usage."]
               indexedDb: [],
+              // reasons: ["No project-specific service-worker user storage was modeled for this mailbox usage."]
               serviceWorkerStorage: [],
+              // reasons: ["No additional modeled browser storage."]
               otherStorage: [],
             },
           },
@@ -859,57 +480,82 @@ export const legalProjectConclusionsData: LegalProjectConclusions = {
     },
 
     blau: {
-      // reasons: ["Blau privacy: https://www.blau.de/recht/datenschutz/"]
-      officialCompanyName: 'Telefónica Germany GmbH & Co. OHG',
-      // reasons: ["Blau privacy page / provider information: https://www.blau.de/recht/datenschutz/"]
-      officialCompanyAddress: 'Georg-Brauchle-Ring 50, 80992 München, Germany',
+      // reasons: ["Blau privacy / imprint pages identify provider."]
+      officialCompanyName: "Telefónica Germany GmbH & Co. OHG",
+      // reasons: ["Blau privacy / imprint pages identify provider."]
+      officialCompanyAddress: "Georg-Brauchle-Ring 50, 80992 München, Germany",
 
       legallyRelevantUrls: {
-        // reasons: ["Blau privacy: https://www.blau.de/recht/datenschutz/"]
-        'Privacy Policy': 'https://www.blau.de/recht/datenschutz/',
+        // reasons: ["Blau privacy page."]
+        "Privacy Policy": "https://www.blau.de/recht/datenschutz/",
+        // reasons: ["Blau imprint page."]
+        Impressum: "https://www.blau.de/recht/impressum/",
       },
 
       subServicesOrFeatures: {
         simCardAndMobilePhoneNumber: {
+          // reasons: [
+          //   legalProjectFactsData.thirdParties.blau.subServicesOrFeatures.simCardAndMobilePhoneNumber,
+          //   "Telecom provider handles connection data under its own telecom/privacy regime."
+          // ]
+          recipientType: "independent_controller",
+
+          // reasons: [
+          //   "Blau privacy page states that personal data is generally processed only in Germany and in the EU."
+          // ]
+          dataRecipientCountry: "Germany / EU",
+
+          // reasons: ["Within EU/EEA -> no separate third-country safeguard is required on the modeled facts."]
+          transferSafeguard: ["none"],
+
+          // reasons: ["Telecom provider acts on its own responsibility; no DPA with the website operator for this line use."]
+          hasDpa: false,
+
+          // reasons: [
+          //   legalProjectFactsData.thirdParties.blau.subServicesOrFeatures.simCardAndMobilePhoneNumber.notes,
+          //   "Phone handling can be pre-contractual or general business communication."
+          // ]
+          legalBases: ["article_6_1_b", "article_6_1_f"],
+
           // reasons: [legalProjectFactsData.thirdParties.blau.subServicesOrFeatures.simCardAndMobilePhoneNumber]
-          recipientType: 'independent_controller',
+          activityType: ["telephony"],
+
+          // reasons: [legalProjectFactsData.thirdParties.blau.subServicesOrFeatures.simCardAndMobilePhoneNumber]
+          purposes: ["telephony", "communication"],
 
           // reasons: [
           //   legalProjectFactsData.thirdParties.blau.subServicesOrFeatures.simCardAndMobilePhoneNumber,
-          //   "Blau states processing is generally in Germany and the EU: https://www.blau.de/recht/datenschutz/",
+          //   "Telephony involves phone/contact data and call-related communication metadata."
           // ]
-          dataRecipientCountry: 'Germany / EU',
+          personalDataCategories: ["contact_data", "communication_data"],
 
-          // reasons: ["Within EU/EEA: no third-country safeguard required."]
-          transferSafeguard: ['none'],
-
-          // reasons: ["Telecom provider is its own controller; no DPA."]
-          hasDpa: false,
-
-          // reasons: [legalProjectFactsData.thirdParties.blau.subServicesOrFeatures.simCardAndMobilePhoneNumber]
-          legalBases: ['article_6_1_b', 'article_6_1_f'],
-
-          // reasons: [legalProjectFactsData.thirdParties.blau.subServicesOrFeatures.simCardAndMobilePhoneNumber]
-          activityType: ['telephony'],
-
-          // reasons: [legalProjectFactsData.thirdParties.blau.subServicesOrFeatures.simCardAndMobilePhoneNumber]
-          purposes: ['telephony', 'communication'],
-
-          // reasons: [legalProjectFactsData.thirdParties.blau.subServicesOrFeatures.simCardAndMobilePhoneNumber]
-          personalDataCategories: ['contact_data'],
-
-          // reasons: ["Telephony provider processes connection/traffic data per telecom contract; retention per provider policies."]
+          // reasons: [
+          //   "Blau privacy page states the provider processes telecom-related data under its own rules and generally in Germany/EU.",
+          //   legalProjectFactsData.thirdParties.blau.subServicesOrFeatures.simCardAndMobilePhoneNumber.notes
+          // ]
           dataProcessing: {
             callHandling: {
-              name: 'telephony connection handling',
+              // reasons: ["Descriptive label for call handling."]
+              name: "telephony connection handling",
+              // reasons: ["Necessary to receive or make calls via the published business number."]
               technicallyNecessary: true,
+              // reasons: [
+              //   legalProjectFactsData.thirdParties.blau.subServicesOrFeatures.simCardAndMobilePhoneNumber.notes,
+              //   "No fact indicates call recording."
+              // ]
               retention:
-                'Connection and traffic data is processed by the telecommunications provider in accordance with provider policies and applicable telecom regulations; we do not store call recordings.',
+                "We do not create call recordings. Our own call-related notes are kept only as long as necessary for handling the request and, where the communication becomes business correspondence, according to the general communication retention logic. Connection and traffic data are otherwise processed by the telecommunications provider under telecom law and its own privacy information.",
+              // reasons: ["No project-specific cookies were modeled for telephony."]
               cookies: [],
+              // reasons: ["No project-specific localStorage was modeled for telephony."]
               localStorage: [],
+              // reasons: ["No project-specific sessionStorage was modeled for telephony."]
               sessionStorage: [],
+              // reasons: ["No project-specific IndexedDB was modeled for telephony."]
               indexedDb: [],
+              // reasons: ["No project-specific service-worker user storage was modeled for telephony."]
               serviceWorkerStorage: [],
+              // reasons: ["No additional modeled browser storage item."]
               otherStorage: [],
             },
           },
@@ -919,24 +565,37 @@ export const legalProjectConclusionsData: LegalProjectConclusions = {
   },
 
   requiredDocuments: {
-    // reasons: ["DDG § 5 (provider identification): https://www.gesetze-im-internet.de/ddg/__5.html"]
+    // reasons: [
+    //   legalProjectFactsData.operator,
+    //   "§ 5 DDG and IHK guidance require provider identification for non-private/business websites."
+    // ]
     imprint: true,
 
-    // reasons: ["GDPR Art. 13 information duties: https://eur-lex.europa.eu/eli/reg/2016/679/oj"]
+    // reasons: [
+    //   legalProjectFactsData.thirdParties,
+    //   legalProjectFactsData.userRelatedFeatures.publicContactEmail,
+    //   legalProjectFactsData.userRelatedFeatures.publicContactPhone,
+    //   "GDPR Article 13 / IHK guidance: website operators processing personal data (including IP-based hosting data) need a privacy policy."
+    // ]
     privacyPolicy: true,
 
     // reasons: [legalProjectFactsData.userRelatedFeatures.contractsConcludedOnWebsite]
     termsAndConditions: false,
 
-    // reasons: ["DPAs are internal contracts, not user-facing documents in this setup."]
+    // reasons: ["DPAs are internal compliance contracts, not user-facing publication documents in this setup."]
     dataProcessingAgreement: false,
 
     // reasons: [
-    //   "No marketing/analytics cookies or other non-essential terminal-device storage/access are identified that would require a standalone cookie policy; Cloudflare Web Analytics is configured cookie-free per provider docs and not injected for EU visitors; cookie details can be handled within privacy policy.",
+    //   legalProjectFactsData.thirdParties,
+    //   "On the canonical facts, no separate standalone cookie-policy document is required; any technically necessary storage information is handled within the privacy policy."
     // ]
     cookiePolicy: false,
 
-    // reasons: [legalProjectFactsData.project.description, "BFSG applies to specific covered products/services in electronic commerce; this informational B2B portfolio site is not within the current scope."]
+    // reasons: [
+    //   legalProjectFactsData.project.description,
+    //   legalProjectFactsData.userRelatedFeatures.contractsConcludedOnWebsite,
+    //   "BFSG primarily concerns covered products/services, especially consumer-facing electronic commerce and comparable covered services; the modeled site is an informational archive/portfolio without direct online contracting."
+    // ]
     accessibilityStatement: false,
   },
 };
