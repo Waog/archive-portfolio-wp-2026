@@ -10,7 +10,7 @@
 	<width>600</width>
 	<height>338</height>
 	<html>&lt;blockquote class="wp-embedded-content"&gt;&lt;a
-		href="https://oliverstadie.com/impressum/"&gt;Impressum&lt;/a&gt;&lt;/blockquote&gt;
+		href="https://oliverstadie.com/legal/#imprint-en"&gt;Impressum&lt;/a&gt;&lt;/blockquote&gt;
 		&lt;script type='text/javascript'&gt;
 		&lt;!--//--&gt;&lt;![CDATA[//&gt;&lt;!--
 		!function(d,l){"use strict";var
@@ -23,7 +23,7 @@
 		10"),a=!!navigator.userAgent.match(/Trident.*rv:11\./),i=l.querySelectorAll("iframe.wp-embedded-content"),s=0;s&lt;i.length;s++)if(!(e=i[s]).getAttribute("data-secret"))if(t=Math.random().toString(36).substr(2,10),e.src+="#?secret="+t,e.setAttribute("data-secret",t),r||a)(t=e.cloneNode(!0)).removeAttribute("security"),e.parentNode.replaceChild(t,e)}}}(window,document);
 		//--&gt;&lt;!]]&gt;
 		&lt;/script&gt;&lt;iframe sandbox="allow-scripts" security="restricted"
-		src="https://oliverstadie.com/impressum/embed/" width="600" height="338"
+		src="https://oliverstadie.com/legal/#imprint-enembed/" width="600" height="338"
 		title="&#x201C;Impressum&#x201D; &#x2014; Oliver Stadie - Portfolio" frameborder="0"
 		marginwidth="0" marginheight="0" scrolling="no"
 		class="wp-embedded-content"&gt;&lt;/iframe&gt;</html>
