@@ -22,5 +22,5 @@ When reviewing pull requests:
 
 - check whether code changes introduce or modify legally relevant functionality (e.g. forms, tracking, third-party services, authentication, payments, notifications)
 - if so, verify that the Legal Project Facts Data (`legal/legal-project-facts.data.ts`) was updated to reflect the change
-- if the Legal Project Facts Data (`legal/legal-project-facts.data.ts`) changed, verify that the Legal Project Conclusions Data (`legal/legal-project-conclusions.data.ts`) and the files in `docs/oliverstadie.com/impressum/index.html` and `docs/oliverstadie.com/datenschutz/index.html` were updated accordingly
+- if the Legal Project Facts Data (`legal/legal-project-facts.data.ts`) changed, verify that the Legal Project Conclusions Data (`legal/legal-project-conclusions.data.ts`) and the files in `docs/legal_output_generated` and `docs/oliverstadie.com/legal/index.html` were updated accordingly
 - it is valid that no change is required, but that outcome must be explicitly justified
