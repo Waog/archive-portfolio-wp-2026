@@ -112,7 +112,7 @@ export const legalProjectFactsData: LegalProjectFacts = {
         valueDescription:
           'Stores a JSON object with decision="stay" and an expiresAt timestamp.',
         purpose:
-          "When loading, the website shows a popup to ask the user to switch the the newest portfolio website (and links to that new portfolio URL with a primary button). In case the user, still decides to stay in this archive website, remember that the visitor decided to stay on the archive website so the popup is not shown repeatedly.",
+          "When loading, the website shows a popup to ask the user to switch to the newest portfolio website (and links to that new portfolio URL with a primary button). In case the user, still decides to stay in this archive website, remember that the visitor decided to stay on the archive website so the popup is not shown repeatedly.",
         retentionPeriod:
           "deleted by the JavaScript of this website after 24 hours, when visiting the website again or when the user clears their browser storage",
         notes: [
