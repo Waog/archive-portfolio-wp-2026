@@ -64,8 +64,7 @@ Evaluate these inputs:
 
 ## Old legal texts:
 
-- https://oliverstadie.com/legal/imprint
-- https://oliverstadie.com/legal/privacy-policy
+https://waog.github.io/archive-portfolio-wp-2026/oliverstadie.com/legal/index.html
 
 ## New legal texts:
 

@@ -119,7 +119,7 @@ Only suggest changes that produce a legal semantic difference in the final HTML 
 
 ## General rule: Traceability
 
-You will produce a chain of documents. The goal is, that the reason/source for each field in the generated data object and for each paragraph in the final documents can be traced back to it's source.
+You will produce a chain of documents. The goal is, that the reason/source for each field in the generated data object and for each paragraph in the final documents can be traced back to its source.
 
 To achieve this, add code comments above each assigned property and sub-property in TypeScript and above each paragraph in HTML. Each comment should include:
 

@@ -8,16 +8,15 @@ Your goal is to identify concrete, legally actionable risks under applicable Ger
 
 ## Website to audit
 
-oliverstadie.com
+https://waog.github.io/archive-portfolio-wp-2026/oliverstadie.com/index.html
 
 ## Entry points for crawling and understanding website semantically
 
-oliverstadie.com
+https://waog.github.io/archive-portfolio-wp-2026/oliverstadie.com/index.html
 
 ## LEGAL TEXTS on audited website
 
-https://oliverstadie.com/legal/imprint
-https://oliverstadie.com/legal/privacy-policy
+https://waog.github.io/archive-portfolio-wp-2026/oliverstadie.com/legal/index.html
 
 ## NETWORK DATA from Chrome Dev Tools Network tab
 

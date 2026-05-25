@@ -159,8 +159,8 @@ export const legalProjectFactsData: LegalProjectFacts = {
 
   documentUrls: {
     imprintUrl:
-      "https://waog.github.io/archive-portfolio-wp-2026/oliverstadie.com/impressum/index.html",
+      "https://waog.github.io/archive-portfolio-wp-2026/oliverstadie.com/legal/index.html#imprint-en",
     privacyPolicyUrl:
-      "https://waog.github.io/archive-portfolio-wp-2026/oliverstadie.com/datenschutz/index.html",
+      "https://waog.github.io/archive-portfolio-wp-2026/oliverstadie.com/legal/index.html#privacy-de",
   },
 };
